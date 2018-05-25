@@ -4,6 +4,8 @@ let app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
+	console.log('a post request was made');
+	res.end();
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
