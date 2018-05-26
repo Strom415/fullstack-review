@@ -1,5 +1,6 @@
 const express = require('express');
 const github = require('../helpers/github.js');
+const db = require('../database/index.js');
 
 let app = express();
 
@@ -11,9 +12,7 @@ app.post('/repos', function (req, res) {
 		userName = chunk + '';
   })
   .on('end', () => {
-  	github.getReposByUsername(userName);
-	  console.log('a post request was made', userName);
-
+  	github.getReposByUsername(userName, db.save);
 	  res.end();
 	});
   // TODO - your code here!
@@ -23,6 +22,10 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
+	console.log('get request happened');
+	db.find((data) => { res.end(JSON.stringify(data)) });
+	// res.end();
+	// res.end();
   // TODO - your code here!
   // This route should send back the top 25 repos
 });
