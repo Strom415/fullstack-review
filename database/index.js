@@ -15,12 +15,12 @@ let Repo = mongoose.model('Repo', repoSchema);
 let save = (repos) => {	
 	for (var i = 0; i < repos.length; i++) {
 		var iso = new Repo ({
-			id: repos[0].id,
-			name: repos[0].name,
-			url: repos[0].html_url,
-			user: repos[0].owner.login,
-			avatar: repos[0].owner.avatar_url,
-			forks: repos[0].forks_count
+			id: repos[i].id,
+			name: repos[i].name,
+			url: repos[i].html_url,
+			user: repos[i].owner.login,
+			avatar: repos[i].owner.avatar_url,
+			forks: repos[i].forks_count
 	  });
 
 		iso.save(function(err, iso) {
